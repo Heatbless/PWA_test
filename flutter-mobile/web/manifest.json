@@ -1,0 +1,26 @@
+{
+  "name": "Flutter PWA Tasks",
+  "short_name": "Flutter Tasks",
+  "start_url": "/?source=pwa",
+  "display": "standalone",
+  "background_color": "#2196F3",
+  "theme_color": "#2196F3",
+  "description": "A Flutter task management PWA that installs as a native-like app",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false,
+  "categories": ["productivity", "utilities"],
+  "icons": [
+    {
+      "src": "icons/Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ]
+}

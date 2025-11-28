@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "pwa-example-project",
+  "builds": [
+    {
+      "src": "react-web/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/react-web/$1"
+    }
+  ]
+}
