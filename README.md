@@ -7,7 +7,12 @@ This project demonstrates creating Progressive Web Apps (PWA) using two differen
 ```
 PWA/
 ├── flutter-mobile/     # Flutter app for mobile with PWA features
-├── react-web/         # React + Vite web app with PWA features
+├── src/               # React app source files
+├── public/            # React app public assets
+├── dist/              # Build output
+├── index.html         # React app entry point
+├── package.json       # React app dependencies
+├── vite.config.js     # Vite + PWA configuration
 ├── vercel.json        # Vercel deployment configuration
 └── README.md          # This file
 ```
@@ -45,7 +50,6 @@ flutter run -d chrome --web-renderer html
 
 ### React Web App  
 ```bash
-cd react-web
 npm install
 npm run dev
 ```
@@ -59,19 +63,16 @@ Both applications are configured as static sites that can be easily deployed to 
 # Install Vercel CLI
 npm i -g vercel
 
-# Deploy from root directory
+# Deploy from root directory - React app will be main site
 vercel --prod
 ```
 
-This will deploy:
-- React app at: `your-domain.vercel.app`
-- Flutter app at: `your-domain.vercel.app/flutter`
+The React PWA will be deployed as the main application.
 
 ### Deploy Individual Apps
 
 **React App Only:**
 ```bash
-cd react-web
 npm run build
 vercel --prod
 ```
@@ -117,10 +118,9 @@ firebase deploy
 
 ## Configuration Files
 
-- `vercel.json` - Multi-app Vercel deployment
-- `react-web/vercel.json` - React SPA routing
-- `flutter-mobile/vercel.json` - Flutter SPA routing  
-- PWA manifests and service workers included
+- `vercel.json` - Vercel deployment with PWA headers
+- `vite.config.js` - Vite build config with PWA plugin
+- PWA manifests and service workers auto-generated
 
 ## 📱 How PWA Installation Works
 
@@ -147,8 +147,8 @@ firebase deploy
 ### Test Installation:
 ```bash
 # 1. Run locally
-cd react-web && npm run dev
-# OR
+npm run dev
+# OR for Flutter
 cd flutter-mobile && flutter run -d chrome
 
 # 2. Open in Chrome
