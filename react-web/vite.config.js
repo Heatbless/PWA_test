@@ -7,7 +7,7 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.ico'],
       manifest: {
         name: 'React PWA Tasks',
         short_name: 'Tasks',
@@ -18,44 +18,21 @@ export default defineConfig({
         orientation: 'portrait-primary',
         scope: '/',
         start_url: '/',
-        categories: ['productivity', 'utilities'],
         icons: [
           {
-            src: '/icon-192x192.png',
+            src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><rect width="192" height="192" fill="%232196f3"/><text x="96" y="110" font-family="Arial" font-size="80" fill="white" text-anchor="middle">📝</text></svg>',
             sizes: '192x192',
-            type: 'image/png',
-            purpose: 'any maskable'
+            type: 'image/svg+xml'
           },
           {
-            src: '/icon-512x512.png',
-            sizes: '512x512', 
-            type: 'image/png',
-            purpose: 'any maskable'
+            src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" fill="%232196f3"/><text x="256" y="300" font-family="Arial" font-size="200" fill="white" text-anchor="middle">📝</text></svg>',
+            sizes: '512x512',
+            type: 'image/svg+xml'
           }
         ]
-      },
-      devOptions: {
-        enabled: true, // Enable PWA in development
-        type: 'module'
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        runtimeCaching: [
-          {
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-cache',
-              expiration: {
-                maxEntries: 10,
-                maxAgeSeconds: 60 * 60 * 24 * 365 // <== 365 days
-              },
-              cacheKeyWillBeUsed: async ({ request }) => {
-                return `${request.url}?version=1`
-              }
-            }
-          }
-        ]
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       }
     })
   ],
